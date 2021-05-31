@@ -1,0 +1,24 @@
+{
+  "name": "project-server-api",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@types/nedb": "^1.8.11",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "multiview": "^3.0.1",
+    "nedb": "^1.8.0",
+    "supervisor": "^0.12.0",
+    "typescript": "^4.3.2",
+    "yarn": "^1.22.10"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node out/index.js",
+    "serve:watch": "supervisor -t -n exit -w out --exec yarn -- start",
+    "compile": "tsc",
+    "compile:watch": "tsc --watch --preserveWatchOutput",
+    "dev": "multiview [ yarn compile:watch ] [ yarn serve:watch ]"
+  }
+}
