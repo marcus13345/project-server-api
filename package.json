@@ -6,6 +6,7 @@
   "dependencies": {
     "@types/nedb": "^1.8.11",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "multiview": "^3.0.1",
     "nedb": "^1.8.0",
@@ -16,9 +17,9 @@
   "type": "module",
   "scripts": {
     "start": "node out/index.js",
-    "serve:watch": "supervisor -t -n exit -w out --exec yarn -- start",
+    "serve:watch": "supervisor -k -t -n exit -w out --exec node -- out/index.js",
     "compile": "tsc",
     "compile:watch": "tsc --watch --preserveWatchOutput",
-    "dev": "multiview [ yarn compile:watch ] [ yarn serve:watch ]"
+    "dev": "cross-env DEBUG_COLORS=true DEBUG_TIMESTAMP=false DEBUG=* multiview [ yarn compile:watch ] [ yarn serve:watch ]"
   }
 }
